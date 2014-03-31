@@ -1,0 +1,19 @@
+{
+    "server": {
+        "name": "iClick2Share",
+        "version": 0.2,
+        "port": 8123,
+        "wait": 10000,
+        "debug": true
+    },
+    "client": {
+        "updatesPerSecond": 6,
+        "encodeImages": false,
+        "cache": {
+            "use": false,
+            "minLength": 16,
+            "minDuration": 500
+        }
+    },
+    "keepAliveInterval": 4
+}

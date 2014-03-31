@@ -1,0 +1,31 @@
+#ic2s-cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(-100px,-100px,0);
+    -webkit-transform: translate3d(-100px,-100px,0);
+    -moz-transform: translate3d(-100px,-100px,0);
+    -ms-transform: translate3d(-100px,-100px,0);
+    background-image: url(iClickfinger144X144.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 44px;
+    height: 44px;
+    z-index: 9999;
+    pointer-events: none;
+}
+#ic2s-boundary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(-100px,-100px,0);
+    -webkit-transform: translate3d(-100px,-100px,0);
+    -moz-transform: translate3d(-100px,-100px,0);
+    -ms-transform: translate3d(-100px,-100px,0);
+    background:none;
+    border: 2px solid rgb(0,200,255);
+    margin: 0;
+    padding: 0;
+    z-index: 9998;
+    pointer-events: none;
+}

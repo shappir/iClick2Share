@@ -1,0 +1,14 @@
+{
+    "name": "iClick2Share",
+    "version": "0.2.0",
+    "description": "co-browsing",
+    "main": "iClick2Share.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shappir/iClick2Share.git"
+    },
+    "author": "Dan Shappir",
+    "bugs": {
+        "url": "https://github.com/shappir/iClick2Share/issues"
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="robots" content="noindex, nofollow, noarchive, nocache" />
+        <meta charset="utf-8" />
+        <title>iClick2Share Support View</title>
+        <link rel="stylesheet" type="text/css" href="/resources/console.css" />
+    </head>
+    <body class="disconnected">
+        <header>
+            <img src="/resources/iClick2shareLogo.png" alt="iClick2Share">
+            <h1>Support Console</h1>
+            <img src="/resources/HTML5_Logo.svg" alt="HTML5">
+        </header>
+
+        <div class="address">
+            <input type="text" disabled>
+            <br>
+            <button id="disconnect" disabled>Disconnect</button>
+            &nbsp;
+            <input type="checkbox" id="follow" checked>&nbsp;<label for="follow">Follow remote window</label>
+            &nbsp;
+            &nbsp;
+            <input type="checkbox" id="freeze">&nbsp;<label for="freeze">Freeze updates</label>
+        </div>
+        <div class="icon" title="Waiting for user"></div>
+        <div class="container">
+            <iframe id="ic2s" src="frame.html"></iframe>
+        </div>
+
+        <footer>
+            Copyright&copy; 2012 iClick2Share&trade;. All rights reserved.
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="ic2s.min.js"></script>
+    </body>
+</html>

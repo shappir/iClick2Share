@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Choose Flight</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="resources/travel.css" />
+
+        <script src="//code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script src="timepicker.js"></script>
+        <script>
+            $(function () {
+                $('.home').click(function () {
+                    location.href = 'travel.html';
+                    return false;
+                });
+
+                var $titles = $('thead td'),
+                    reNumeric = /^[$]?(\d+)/;
+
+                $titles
+                    .focus(function () {
+                        var $tbody = $(this).parents('table').children('tbody'),
+                            rows = $.makeArray($tbody.children()),
+                            index = 1 + $titles.index(this);
+                        rows.sort(function (a, b) {
+                            var selector = ':nth-child(' + index + ')',
+                                aa = $(a).children(selector).text(),
+                                bb = $(b).children(selector).text(),
+                                ma = aa.match(reNumeric);
+                            if (ma) {
+                                var mb = bb.match(reNumeric);
+                                if (mb) {
+                                    aa = parseInt(ma[1], 10);
+                                    bb = parseInt(mb[1], 10);
+                                }
+                            }
+                            return aa === bb ? 0 : aa < bb ? -1 : 1;
+                        });
+                        var html = rows.map(function (row) {
+                            return row.outerHTML;
+                        }).join('\n');
+                        $tbody.html(html);
+                    });
+
+                $titles.last().focus();
+
+                $('input[id$="expiry"]').datepicker({ duration: 0 });
+            });
+        </script>
+
+        <script id="ic2s-loader" type="text/javascript" defer async>
+            var ic2s = { origin: "" };
+            (function () {
+                "use strict";
+                function load() {
+                    if (ic2s.origin && ic2s.origin.indexOf("//") === -1)
+                        ic2s.origin = "//" + ic2s.origin;
+                    var elem = document.createElement("script");
+                    elem.type = 'text/javascript';
+                    elem.async = true;
+                    elem.src = ic2s.origin + "/ic2s.min.js";
+                    var loader = document.getElementById("ic2s-loader");
+                    if (loader) {
+                        var parent = loader.parentNode;
+                        if (parent) {
+                            parent.replaceChild(elem, loader);
+                            return;
+                        }
+                    }
+                    document.body.appendChild(elem);
+                }
+                if (window.addEventListener)
+                    window.addEventListener("load", load, false);
+                else if (window.attachEvent)
+                    window.attachEvent("onload", load);
+            })();
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="travel.html" title="Middle Earth Travel">Middle Earth Travel</a></h1>
+            <ul>
+                <li>Welcome to Middle Earth Travel</li>
+                <li>Sign In</li>
+                <li>Sign Up</li>
+                <li class="ic2s-button" data-ic2s-alt="Stop Sharing">Click to Share</li>
+            </ul>
+        </header>
+        <section>
+            <ul>
+                <li class="home">Home</li>
+                <li>Vacation Packages</li>
+                <li id="active">Flights</li>
+                <li>Cars</li>
+                <li>Things to Do</li>
+                <li>Travel Deals</li>
+            </ul>
+            <div id="form" style="width: 600px">
+                <h2>Select Your Departure</h2>
+                <div>
+                    <table id="results">
+                        <thead>
+                            <tr>
+                                <td tabindex="0">Airline</td>
+                                <td tabindex="0">Departure</td>
+                                <td tabindex="0">Duration</td>
+                                <td tabindex="0">Arrival</td>
+                                <td tabindex="0">Price</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Eagles are Coming</td>
+                                <td>Mount Doom</td>
+                                <td>3 hours</td>
+                                <td>Minas Tirith</td>
+                                <td>$800</td>
+                            </tr>
+                            <tr>
+                                <td>Eagles are Coming</td>
+                                <td>Orthanc</td>
+                                <td>2 hours</td>
+                                <td>Rohan</td>
+                                <td>$700</td>
+                            </tr>
+                            <tr>
+                                <td>Eagles are Coming</td>
+                                <td>Zirakzigil</td>
+                                <td>6 hours</td>
+                                <td>Lórien</td>
+                                <td>$1100</td>
+                            </tr>
+                            <tr>
+                                <td>Nazgûl on Wings</td>
+                                <td>Minas Morgul</td>
+                                <td>5 hours</td>
+                                <td>Minas Tirith</td>
+                                <td>$1000</td>
+                            </tr>
+                            <tr>
+                                <td>Nazgûl on Wings</td>
+                                <td>Black Gate</td>
+                                <td>1 hour</td>
+                                <td>Mount Doom</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Smaug</td>
+                                <td>Lonely Mountain</td>
+                                <td>1 hour</td>
+                                <td>Laketown</td>
+                                <td>$300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <br>
+
+                    <table data-ic2s-ignore>
+                        <tr>
+                            <td colspan="2">
+                                <label for="number">Card number</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="text" id="number" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="expiry">Expiry date</label>
+                            </td>
+                            <td>
+                                <label for="cvv">CVV</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="expiry" />
+                            </td>
+                            <td>
+                                <input type="text" id="cvv" maxlength="3" style="width:3em;"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br>
+                    <label for="requests">Special requests</label>
+                    <br>
+                    <textarea id="requests"></textarea>
+                </div>
+            </div>
+        </section>
+        <footer>
+            One travel site to rule them all
+        </footer>
+    </body>
+</html>

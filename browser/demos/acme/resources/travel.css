@@ -1,0 +1,277 @@
+body
+{
+    font-family: calibri, 'Arial Narrow', Times, serif;
+    padding: 0;
+    margin: 0;
+    color: blue;
+    background-color: white;
+}
+
+a
+{
+    color: cyan;
+    text-decoration: initial;
+}
+
+ul, li 
+{
+    display: block;
+    float: left;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 1.5em;
+    vertical-align: middle;
+}
+li
+{
+    text-align: center;
+    width: 14em;
+    border-left: 1px solid;
+}
+li:hover
+{
+    text-decoration: underline;
+    cursor: pointer;    
+}
+
+header
+{
+    color:  white;
+    background-color: darkblue;
+    height: 4em;
+    margin: 0;
+    padding: 0;
+}
+header > h1
+{
+    position: absolute;
+    font-style: italic;
+}
+header > ul
+{
+    position: absolute;
+    right: 0;
+}
+header li
+{
+    border-left-color: cyan;
+}
+header li:hover
+{
+    background-color: blue;
+}
+
+section > ul
+{
+    position: relative;
+    top: -2em;
+}
+section li
+{
+    background-color: yellow;
+    border-left-color: rgb(255, 204, 51);
+}
+section li:hover
+{
+    background-color: rgb(255, 204, 51);
+}
+
+iframe
+{
+    border-width: 0;
+}
+
+#active
+{
+    border-width: 0;
+    background-color: inherit;
+}
+#active:hover
+{
+    background-color: inherit;
+    text-decoration: inherit;
+    cursor: default;
+}
+
+#map, #images
+{
+    position: absolute;
+    top: 96px;
+    left: 444px;
+    width: 512px;
+    height: 384px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+}
+#map
+{
+    background-image: url(me.jpg);
+}
+#images
+{
+    top: 498px;
+    height: 354px;
+    background-image: url(1130-nazgul.jpg);
+    -webkit-animation: scenes 40s infinite;
+    -webkit-transition-timing-function: ease-out;
+}
+
+#form
+{
+    margin: 2em 0.5em 0.5em 0.5em;
+    padding: 0.5em;
+    border: 4px solid darkblue;
+    border-top-width: 2em;
+    border-radius: 8px;
+    width: 400px;
+}
+#form > h2
+{
+    color: white;
+    position: relative;
+    top: -2.5em;
+    left: 0.2em;
+}
+#form > div, #form > form
+{
+    position: relative;
+    top: -4em;
+}
+table input, table select
+{
+    width: 8em;
+}
+
+form
+{
+    display: none;
+}
+form > table
+{
+    width: 80%;
+}
+
+.buttons
+{
+    text-align: right;
+    margin-top: 1em;
+}
+
+footer
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 1.3em;
+    margin: 0;
+    border-top: 1px solid grey;
+    background-color: white;
+}
+
+.ui-state-default
+{
+    font-family: calibri, 'Arial Narrow', Times, serif;
+    font-size: inherit;
+    border: 1px solid #d3d3d3; 
+    background: yellow;
+    font-weight: normal;
+    color: blue;
+}
+.ui-state-default:hover
+{
+    text-decoration: underline;
+    background-color: rgb(255, 204, 51);   
+}
+
+#results
+{
+    cursor: pointer;
+}
+
+#results
+{
+    width: 100%;
+}
+#results thead td
+{
+    border-top: 4px solid yellow;
+}
+#results thead td:hover
+{
+    border-top: 4px solid blue;
+    background-color: cyan;
+}
+#results thead td:focus
+{
+    outline: 0;
+    border-top: 4px solid darkblue;
+}
+#results tbody td
+{
+    padding: 4px 0;
+    border-top: 1px solid gray;
+}
+#results tbody tr:hover
+{
+    background-color: cyan;
+}
+
+#requests
+{
+    width: 50%;
+}
+
+@-webkit-keyframes scenes
+{
+    0% {
+        background-image: url(1130-nazgul.jpg);
+    }
+    18% {
+        background-image: url(1130-nazgul.jpg);
+    }
+    20% {
+        background-image: url(EowynAndTheNazgul.jpg);
+    }
+    38% {
+        background-image: url(EowynAndTheNazgul.jpg);
+    }
+    40% {
+        background-image: url(mw_01.jpg);
+    }
+    58% {
+        background-image: url(mw_01.jpg);
+    }
+    60% {
+        background-image: url(The_Nazgul_by_dashingamit.jpg);
+    }
+    78% {
+        background-image: url(The_Nazgul_by_dashingamit.jpg);
+    }
+    80% {
+        background-image: url(TN-Bilbo_and_the_Eagles.jpg);
+    }
+    98% {
+        background-image: url(TN-Bilbo_and_the_Eagles.jpg);
+    }
+}
+
+.ic2s-banner
+{
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    color: white;
+    background-color: darkblue;
+    padding: 6px;
+    border: 2px solid white;
+    border-radius: 6px;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}

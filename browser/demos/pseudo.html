@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>pseudo</title>
+    <style media="all">
+        q:before
+        {
+            content: open-quote;
+            color: red;
+        }
+        q:after
+        {
+            content: close-quote;
+            color: blue;
+        }
+
+        li {
+            list-style-type: none;
+            position: relative;
+            margin: 1px;
+            padding: 0.5em 0.5em 0.5em 2em;
+            background-color: grey;
+        }
+        li:hover {
+            background-color: #d3d3d3;
+        }
+
+        li.done {
+            background-color: #CCFF99;
+        }
+        li.done:hover {
+            background-color: lightgreen;
+        }
+
+        li.done::before {
+            content: '';
+            position: absolute;
+            border-color: #009933;
+            border-style: solid;
+            border-width: 0 0.3em 0.25em 0;
+            height: 1em;
+            top: 1.3em;
+            left: 0.6em;
+            margin-top: -1em;
+            transform: rotate(45deg);
+            width: 0.5em;
+        }
+    </style>
+    <script id="ic2s-loader" type="text/javascript" defer async>
+        var ic2s = { origin: "" };
+        (function () {
+            "use strict";
+            function load() {
+                if (ic2s.origin && ic2s.origin.indexOf("//") === -1)
+                    ic2s.origin = "//" + ic2s.origin;
+                var elem = document.createElement("script");
+                elem.type = 'text/javascript';
+                elem.async = true;
+                elem.src = ic2s.origin + "/ic2s.min.js";
+                var loader = document.getElementById("ic2s-loader");
+                if (loader) {
+                    var parent = loader.parentNode;
+                    if (parent) {
+                        parent.replaceChild(elem, loader);
+                        return;
+                    }
+                }
+                document.body.appendChild(elem);
+            }
+            if (window.addEventListener)
+                window.addEventListener("load", load, false);
+            else if (window.attachEvent)
+                window.attachEvent("onload", load);
+        })();
+    </script>
+</head>
+<body>
+    <div class="ic2s-button"><q>hello</q> <span>there</span> <q>world</q></div>
+
+    <ul>
+        <li>Buy milk</li>
+        <li>Take the dog for a walk</li>
+        <li>Exercise</li>
+        <li>Write code</li>
+        <li>Play music</li>
+        <li>Relax</li>
+    </ul>
+    <script>
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) {
+            if( ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('done');
+            }
+        }, false);
+    </script>
+</body>
+</html>

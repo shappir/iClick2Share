@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Middle Earth Travel</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="resources/travel.css" />
+
+        <script src="//code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script src="timepicker.js"></script>
+        <script>
+            $(function () {
+                $('input[id$="date"]').datepicker({ duration: 0 });
+                $('input[id$="time"]').timepicker({ duration: 0 });
+                $('button').button();
+
+                var selected;
+                $('input[name="plan"]').click(function () {
+                    if (selected)
+                        selected.css('display', 'none');
+                    selected = $('#' + this.id + 'info');
+                    selected.css('display', 'inherit');
+                });
+                $('#flight').click();
+
+                var room = $('#room');
+                $('#rooms').change(function () {
+                    var base = room.find('tr:eq(1)').clone(),
+                        number = parseInt(this.value, 10),
+                        start = room[0].rows.length - 1;
+                    room.find('tr:gt(' + number + ')').remove();
+                    for (var i = start; i < number; ) {
+                        var row = base.clone();
+                        row[0].children[0].innerText = 'Room ' + ++i;
+                        room.append(row);
+                    }
+                });
+
+                $('.flights').click(function () {
+                    location.href = 'flights.html';
+                    return false;
+                });
+            });
+        </script>
+
+        <script id="ic2s-loader" type="text/javascript" defer async>
+            var ic2s = { origin: "" };
+            (function () {
+                "use strict";
+                function load() {
+                    if (ic2s.origin && ic2s.origin.indexOf("//") === -1)
+                        ic2s.origin = "//" + ic2s.origin;
+                    var elem = document.createElement("script");
+                    elem.type = 'text/javascript';
+                    elem.async = true;
+                    elem.src = ic2s.origin + "/ic2s.min.js";
+                    var loader = document.getElementById("ic2s-loader");
+                    if (loader) {
+                        var parent = loader.parentNode;
+                        if (parent) {
+                            parent.replaceChild(elem, loader);
+                            return;
+                        }
+                    }
+                    document.body.appendChild(elem);
+                }
+                if (window.addEventListener)
+                    window.addEventListener("load", load, false);
+                else if (window.attachEvent)
+                    window.attachEvent("onload", load);
+            })();
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="" title="Middle Earth Travel">Middle Earth Travel</a></h1>
+            <ul>
+                <li>Welcome to Middle Earth Travel</li>
+                <li>Sign In</li>
+                <li>Sign Up</li>
+                <li class="ic2s-button" data-ic2s-alt="Stop Sharing">Click to Share</li>
+            </ul>
+        </header>
+        <section>
+            <ul>
+                <li id="active">Home</li>
+                <li>Vacation Packages</li>
+                <li class="flights">Flights</li>
+                <li>Cars</li>
+                <li>Things to Do</li>
+                <li>Travel Deals</li>
+            </ul>
+            <div id="form">
+                <h2>Plan your trip</h2>
+                <div>
+                    <input type="radio" name="plan" id="flight" checked><label for="flight">Flight</label><br>
+                    <input type="radio" name="plan" id="hotel"><label for="hotel">Hotel</label><br>
+                    <input type="radio" name="plan" id="cruise"><label for="cruise">Cruise</label><br>
+                </div>
+                <form id="flightinfo">
+                    <h3>Flight</h3>
+                    <input type="radio" name="flight" id="roundtrip" checked><label for="roundtrip">Roundtrip</label>
+                    <input type="radio" name="flight" id="oneway"><label for="oneway">One way</label>
+                    <input type="radio" name="flight" id="multiple"><label for="multiple">Multiple destinations</label>
+                    <br>
+                    <table>
+                        <tr>
+                            <td><label for="orig">Leaving from:</label></td>
+                            <td><label for="departdate">Departing:</label></td>
+                            <td><label for="departtime">Time:</label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="orig">
+                                    <option>Shire</option>
+                                    <option>Gondor</option>
+                                    <option>Rohan</option>
+                                    <option>Moria</option>
+                                    <option>Morder</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id="departdate"></td>
+                            <td><input type="text" id="departtime"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="dest">Going to:</label></td>
+                            <td><label for="arivedate">Ariving:</label></td>
+                            <td><label for="arivetime">Time:</label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="dest">
+                                    <option>Shire</option>
+                                    <option>Gondor</option>
+                                    <option>Rohan</option>
+                                    <option>Moria</option>
+                                    <option>Morder</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id="arivedate"></td>
+                            <td><input type="text" id="arivetime"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="big">Big people (18-64):</label></td>
+                            <td><label for="wizards">Wizards (65+):</label></td>
+                            <td><label for="hobbits">Hobbits (0-17):</label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="big">
+                                    <option value="0">0</option>
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="wizards">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="hobbits">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <button class="flights">Search for flight</button><br><button class="flights">Search for flight + hotel</button>
+                    </div>
+                </form>
+                <form id="hotelinfo">
+                    <h3>Hotel</h3>
+                    <label for="city">What City?</label>
+                    <br>
+                    <select id="city">
+                        <option>Bree</option>
+                        <option>Minas Tirith</option>
+                        <option>Rivendell</option>
+                        <option>Lothlórien</option>
+                        <option>Barad-dûr</option>
+                    </select>
+                    <br>
+                    <table>
+                        <tr>
+                            <td><label for="checkindate">Check-in:</label></td>
+                            <td><label for="checkoutdate">Check-out:</label></td>
+                            <td><label for="rooms">Rooms:</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="checkindate"></td>
+                            <td><input type="text" id="checkoutdate"></td>
+                            <td>
+                                <select id="rooms">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9+</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="room">
+                        <tr>
+                            <td></td>
+                            <td><label for="big2">Big people (18+):</label></td>
+                            <td><label for="hobbit2">Hobbits (0-17):</label></td>
+                        </tr>
+                        <tr>
+                            <td>Room 1</td>
+                            <td>
+                                <select id="big2">
+                                    <option value="1">1</option>
+                                    <option value="2" selected>2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="hobbit2">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <button>Search for hotels</button>
+                    </div>
+                </form>
+                <form id="cruiseinfo">
+                    <h3>Cruise</h3>
+                    <table>
+                        <tr>
+                            <td><label for="destination">Select destination:</label></td>
+                            <td><label for="departuredate">Departure:</label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="destination">
+                                    <option selected>Valinor</option>
+                                    <option>Númenor</option>
+                                    <option>Umbar</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id="departuredate"></td>
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <button>Search for cruise</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <div id="map" title="Middle Earth map">&nbsp;</div>
+        <div id="images">&nbsp;</div>
+        <footer>
+            One travel site to rule them all
+        </footer>
+    </body>
+</html>
