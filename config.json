@@ -2,7 +2,8 @@
     "server": {
         "name": "iClick2Share",
         "version": 0.2,
-        "port": 8123,
+        "port": 80,
+        "SSL": 443,
         "wait": 10000,
         "debug": true
     },
